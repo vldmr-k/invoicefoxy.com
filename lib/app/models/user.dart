@@ -1,4 +1,5 @@
 import 'package:nylo_framework/nylo_framework.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class User extends Model {
   String? name;
@@ -7,6 +8,11 @@ class User extends Model {
   static StorageKey key = 'user';
 
   User() : super(key: key);
+
+  
+  User.fromFirebaseUserCredential(UserCredential userCredential) {
+    email = userCredential.user?.email;
+  }
 
   User.fromJson(dynamic data) {
     name = data['name'];

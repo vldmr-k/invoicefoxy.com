@@ -1,3 +1,6 @@
+import 'package:invoicefoxy_all/app/models/user.dart';
+import 'package:invoicefoxy_all/resources/pages/login_page.dart';
+
 import '/resources/pages/home_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
@@ -22,8 +25,12 @@ class AuthRouteGuard extends NyRouteGuard {
 
     bool isLoggedIn = (await Auth.isAuthenticated());
     if (!isLoggedIn) {
-      return redirect(HomePage.path);
+      return redirect(LoginPage.path);
     }
+
+    var data = (await Auth.data()) ;
+
+    printDebug("User $data");
 
     return pageRequest;
   }

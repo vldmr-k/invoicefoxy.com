@@ -1,6 +1,13 @@
+import '/resources/pages/dashboard_page.dart';
+import '/resources/pages/forgot_password_page.dart';
+import 'package:invoicefoxy_all/resources/pages/invoice_list_page.dart';
+
+import '/resources/pages/register_page.dart';
+import '/resources/pages/login_page.dart';
 import '/resources/pages/not_found_page.dart';
 import '/resources/pages/home_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import '/routes/guards/auth_route_guard.dart';
 
 /* App Router
 |--------------------------------------------------------------------------
@@ -20,7 +27,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 |-------------------------------------------------------------------------- */
 
 appRouter() => nyRoutes((router) {
-      router.add(HomePage.path).initialRoute();
+  router.add(HomePage.path).initialRoute();
 
       // Add your routes here ...
       // router.add(NewPage.path, transitionType: TransitionType.fade());
@@ -32,5 +39,22 @@ appRouter() => nyRoutes((router) {
       // }, (router) {
       //
       // });
-      router.add(NotFoundPage.path).unknownRoute();
+  
+  router.add(LoginPage.path);
+  router.add(RegisterPage.path);
+  router.add(ForgotPasswordPage.path);
+
+  router.add(DashboardPage.path)
+    .addRouteGuard(AuthRouteGuard())
+    .authenticatedRoute();
+
+  router.group(() => {
+    "route_guards": [AuthRouteGuard()],
+    "prefix": "/dashboard"
+  }, (router) {
+    router.add(InvoiceListPage.path);
+  });
+
+
+  router.add(NotFoundPage.path).unknownRoute();
 });

@@ -1,17 +1,33 @@
 import 'package:nylo_framework/nylo_framework.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+// class LogoutEvent implements NyEvent {
+//   @override
+//   final listeners = {
+//     DefaultListener: DefaultListener(),
+//   };
+// }
+
+// class DefaultListener extends NyListener {
+//   @override
+//   handle(dynamic event) async {
+//     await Auth.logout();
+
+//     routeToInitial();
+//   }
+// }
 
 class LogoutEvent implements NyEvent {
   @override
   final listeners = {
-    DefaultListener: DefaultListener(),
+    FirebaseListener: FirebaseListener(),
   };
 }
 
-class DefaultListener extends NyListener {
+class FirebaseListener extends NyListener {
   @override
   handle(dynamic event) async {
-    await Auth.logout();
-
-    routeToInitial();
+    // logout from firebase
+    await FirebaseAuth.instance.signOut();
   }
 }

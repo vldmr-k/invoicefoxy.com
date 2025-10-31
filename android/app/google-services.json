@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "254575177319",
+    "project_id": "invoicefoxy",
+    "storage_bucket": "invoicefoxy.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254575177319:android:356525fea5470a8ef9aec2",
+        "android_client_info": {
+          "package_name": "com.nylo.android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBC_bszLojVBZcfcsAg_TpllQzE1LKbuQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

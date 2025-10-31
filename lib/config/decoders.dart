@@ -1,3 +1,10 @@
+import '/app/networking/organization_service_api_service.dart';
+import '/app/models/organization.dart';
+import '/app/controllers/dashboard_controller.dart';
+import '/app/controllers/forgot_password_controller.dart';
+import '/app/controllers/invoice_list_controller.dart';
+import '/app/controllers/register_controller.dart';
+import '/app/controllers/login_controller.dart';
 import '/app/controllers/home_controller.dart';
 import '/app/models/user.dart';
 import '/app/networking/api_service.dart';
@@ -19,6 +26,10 @@ final Map<Type, dynamic> modelDecoders = {
   User: (data) => User.fromJson(data),
 
   // User: (data) => User.fromJson(data),
+
+  List<Organization>: (data) => List.from(data).map((json) => Organization.fromJson(json)).toList(),
+
+  Organization: (data) => Organization.fromJson(data),
 };
 
 /* API Decoders
@@ -33,6 +44,8 @@ final Map<Type, dynamic> apiDecoders = {
   ApiService: () => ApiService(),
 
   // ...
+
+  OrganizationServiceApiService: OrganizationServiceApiService(),
 };
 
 /* Controller Decoders
@@ -45,4 +58,13 @@ final Map<Type, dynamic> controllers = {
   HomeController: () => HomeController(),
 
   // ...
+
+  LoginController: () => LoginController(),
+
+  RegisterController: () => RegisterController(),
+  // InvoiceListController: () => InvoiceListController(),
+
+  ForgotPasswordController: () => ForgotPasswordController(),
+
+  DashboardController: () => DashboardController(),
 };

@@ -1,5 +1,8 @@
+import 'package:invoicefoxy_all/resources/pages/register_page.dart';
+
+import '/resources/pages/login_page.dart';
+
 import '/resources/widgets/theme_toggle_widget.dart';
-import '/app/networking/api_service.dart';
 import '/bootstrap/extensions.dart';
 import '/resources/widgets/logo_widget.dart';
 import '/resources/widgets/safearea_widget.dart';
@@ -101,6 +104,14 @@ class _HomePageState extends NyPage<HomePage> {
                           trailing: const Icon(Icons.chevron_right),
                           onTap: () => routeTo("/landing"),
                         ),
+                      ListTile(
+                        title: Text("Login"),
+                        onTap: () => routeTo(LoginPage.path),
+                      ),
+                      ListTile(
+                        title: Text("Register"),
+                        onTap: () => routeTo(RegisterPage.path),
+                      ),
                       ListTile(
                         leading: FaIcon(FontAwesomeIcons.readme),
                         title: Text(
