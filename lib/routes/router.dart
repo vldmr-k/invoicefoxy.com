@@ -1,6 +1,13 @@
+import 'package:invoicefoxy_all/app/models/customer.dart';
+
+import '/resources/pages/dashboard/company_switcher_page.dart';
+import 'package:invoicefoxy_all/routes/guards/check_company_selected_route_guard.dart';
+
+import '../resources/pages/dashboard/company_switcher_page.dart';
+import '../resources/pages/onboarding_company_navigation_hub.dart';
+import '../resources/pages/dashboard/dashboard_navigation_hub.dart';
 import '/resources/pages/dashboard_page.dart';
 import '/resources/pages/forgot_password_page.dart';
-import 'package:invoicefoxy_all/resources/pages/invoice_list_page.dart';
 
 import '/resources/pages/register_page.dart';
 import '/resources/pages/login_page.dart';
@@ -44,17 +51,26 @@ appRouter() => nyRoutes((router) {
   router.add(RegisterPage.path);
   router.add(ForgotPasswordPage.path);
 
-  router.add(DashboardPage.path)
-    .addRouteGuard(AuthRouteGuard())
+  router.add(DashboardPage.path);
+
+  router.add(CompanySwitcherPage.path)
+    .addRouteGuards([AuthRouteGuard(), CheckCompanySelectedRouteGuard()])
     .authenticatedRoute();
 
   router.group(() => {
     "route_guards": [AuthRouteGuard()],
     "prefix": "/dashboard"
   }, (router) {
-    router.add(InvoiceListPage.path);
-  });
+    //navigation
+    router.add(DashboardNavigationHub.path);
 
+    //onboarding
+    router.add(OnboardingCompanyNavigationHub.path);
+
+    //pages
+    // router.add(CustomerPage.path);
+    
+  });
 
   router.add(NotFoundPage.path).unknownRoute();
 });

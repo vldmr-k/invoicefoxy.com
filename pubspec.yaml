@@ -30,11 +30,10 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  firebase_core: ^4.2.0
-  firebase_auth: ^6.1.1
-  cloud_firestore: ^6.0.3
-  firestore_converter: ^1.0.9
   pocketbase: ^0.23.0+1
+  json_serializable: ^6.11.1
+  shared_preferences: ^2.5.3
+  wolt_modal_sheet: ^0.11.0
 
 dev_dependencies:
   rename: ^3.1.0

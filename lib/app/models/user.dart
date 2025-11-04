@@ -1,24 +1,34 @@
 import 'package:nylo_framework/nylo_framework.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import "package:pocketbase/pocketbase.dart";
+import 'package:json_annotation/json_annotation.dart';
 
+part 'user.g.dart';
+
+@JsonSerializable()
 class User extends Model {
-  String? name;
-  String? email;
+  String id;
+  String name;
+  String email;
+  String avatar;
+  bool verified;
 
   static StorageKey key = 'user';
 
-  User() : super(key: key);
+  User({
+    this.id = '',
+    this.name = '',
+    this.email = '',
+    this.avatar = '',
+    this.verified = false
+  }) : super(key: key);
 
-  
-  User.fromFirebaseUserCredential(UserCredential userCredential) {
-    email = userCredential.user?.email;
-  }
+  /// Creates a new User instance form the provided RecordModel.
+  factory User.fromRecord(RecordModel record) => User.fromJson(record.toJson());
 
-  User.fromJson(dynamic data) {
-    name = data['name'];
-    email = data['email'];
-  }
 
-  @override
-  toJson() => {"name": name, "email": email};
+  /// Connect the generated [_$User] function to the `fromJson` factory.
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  /// Connect the generated [_$User] function to the `toJson` method.
+  Map<String, dynamic> toJson() => _$UserToJson(this);
 }

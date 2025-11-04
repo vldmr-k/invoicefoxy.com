@@ -6,6 +6,7 @@ import '/resources/widgets/buttons/partials/gradient_button_widget.dart';
 import '/resources/widgets/buttons/partials/rounded_button_widget.dart';
 import '/resources/widgets/buttons/partials/outlined_button_widget.dart' as app;
 import '/resources/widgets/buttons/partials/icon_button_widget.dart' as app;
+import '/resources/widgets/buttons/partials/icon_only_button_widget.dart' as app;
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
@@ -17,7 +18,7 @@ class Button {
     (dynamic, Function(dynamic data))? submitForm,
     Function(dynamic error)? onFailure,
     bool showToastError = true,
-    Color? color,
+    Color? color = Colors.black87,
     double? width,
     double height = 50,
     LoadingStyle? loadingStyle,
@@ -146,6 +147,36 @@ class Button {
       child: (pressed) {
         return app.IconButton(
           text: text,
+          onPressed: pressed,
+          icon: icon,
+          color: color,
+          width: width,
+          height: height,
+        );
+      },
+    );
+  }
+
+  ///
+  /// Icon button
+  static Widget iconOnly({
+    VoidCallback? onPressed,
+    (dynamic, Function(dynamic data))? submitForm,
+    Function(dynamic error)? onFailure,
+    bool showToastError = true,
+    required Widget icon,
+    Color? color,
+    double? width,
+    double height = 50,
+    LoadingStyle? loadingStyle,
+  }) {
+    return ButtonState(
+      onSubmit: (onPressed, submitForm),
+      onFailure: onFailure,
+      showToastError: showToastError,
+      loadingStyle: loadingStyle,
+      child: (pressed) {
+        return app.IconOnlyButton(
           onPressed: pressed,
           icon: icon,
           color: color,
