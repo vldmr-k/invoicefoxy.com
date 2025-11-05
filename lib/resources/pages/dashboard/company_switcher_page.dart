@@ -29,9 +29,7 @@ class _CompanySwitcherPageState extends NyPage<CompanySwitcherPage> {
       ),
       body: SafeArea(
           child: NyPullToRefresh.separated(
-              beforeRefresh: () async => {
-                  await 
-              },
+              
               child: (BuildContext context, dynamic data) {
                   return ListTile(
                       title: Text(data.name),
