@@ -215,6 +215,28 @@ class Button {
         });
   }
 
+   
+  /// Gradient button
+  static Widget gradientFoxy({
+    required String text,
+    VoidCallback? onPressed,
+    Function(dynamic error)? onFailure,
+    bool showToastError = true,
+    (dynamic, Function(dynamic data))? submitForm,
+    List<Color> gradientColors = const [Colors.orange, Colors.orangeAccent],
+    double? width,
+    double height = 50,
+    LoadingStyle? loadingStyle,
+  }) {
+    return Button.gradient(
+      text: text,
+      onPressed: onPressed,
+      gradientColors: gradientColors,
+      width: width,
+      height: height,
+    );
+  }
+
   /// Rounded button
   static Widget rounded({
     required String text,

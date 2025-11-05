@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invoicefoxy_all/bootstrap/helpers.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 class FormStyle extends NyFormStyle {
@@ -11,7 +12,7 @@ class FormStyle extends NyFormStyle {
             decoration: (dynamic data, InputDecoration inputDecoration) =>
                 inputDecoration.copyWith(
               filled: true,
-              fillColor: Colors.grey.shade100,
+              fillColor: Colors.grey,
               isDense: true,
               hintText: field.name,
               focusedBorder: OutlineInputBorder(
@@ -60,12 +61,12 @@ class FormStyle extends NyFormStyle {
             decoration: (dynamic data, InputDecoration inputDecoration) =>
                 inputDecoration.copyWith(
               filled: true,
-              fillColor: Colors.grey.shade100,
+              fillColor: ThemeColor.get(context).inputBackground,
               isDense: true,
               hintText: field.name,
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
-                  borderSide: BorderSide(color: Colors.transparent)),
+                  borderSide: BorderSide(color: Colors.black, width: 1)),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   borderSide: BorderSide(color: Colors.transparent)),
@@ -90,12 +91,12 @@ class FormStyle extends NyFormStyle {
                 inputDecoration.copyWith(
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(12)),
-                borderSide: BorderSide(color: Colors.orange, width: 2),
+                borderSide: BorderSide(color: Colors.red, width: 1),
               ),
-              errorStyle: TextStyle(color: Colors.red),
+              errorStyle: TextStyle(color: Colors.redAccent[400]),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(12)),
-                borderSide: BorderSide(color: Colors.orange, width: 2),
+                borderSide: BorderSide(color: Colors.redAccent, width: 1),
               ),
             ),
           )),

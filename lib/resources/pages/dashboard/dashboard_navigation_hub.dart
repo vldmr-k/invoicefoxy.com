@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:invoicefoxy_all/resources/pages/dashboard_page.dart';
+import 'package:invoicefoxy_all/resources/pages/dashboard/settings_page.dart';
 import 'package:invoicefoxy_all/resources/widgets/dashboard/dashboard_navigation_hub/customers_tab_widget.dart';
 import 'package:invoicefoxy_all/resources/widgets/dashboard/dashboard_navigation_hub/invoices_tab_widget.dart';
-import 'package:invoicefoxy_all/resources/widgets/dashboard/dashboard_navigation_hub/settings_tab_widget.dart';
 import 'package:invoicefoxy_all/resources/widgets/dashboard/dashboard_navigation_hub/tools_tab_widget.dart';
 import 'package:invoicefoxy_all/resources/widgets/dashboard/dashboard_navigation_hub/reports_tab_widget.dart';
 
@@ -66,7 +65,7 @@ class _DashboardNavigationHubState extends NavigationHub<DashboardNavigationHub>
       ),
       4: NavigationTab(
          title: "Settings",
-         page: SettingsTab(),
+         page: SettingsPage(),
          icon: Icon(Icons.settings),
          activeIcon: Icon(Icons.settings),
       ),

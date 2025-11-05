@@ -13,7 +13,6 @@ class CheckCompanySelectedRouteGuard extends NyRouteGuard {
   onRequest(PageRequest pageRequest) async {
     // // Default
     String? companySelectedId = await Keys.companySelected.read();
-    printDebug("Current Company id $companySelectedId");
     if (companySelectedId == null) {
       return redirect(CompanySwitcherPage.path, navigationType:  NavigationType.pushReplace);
     } else {

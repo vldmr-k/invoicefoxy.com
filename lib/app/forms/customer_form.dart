@@ -17,32 +17,32 @@ class CustomerForm extends NyFormData {
   fields() => [
      Field.text("Name",
         label: "Name",
-        style: "compact",
         validate: FormValidator.notEmpty(),
+        style: "default"
     ),
-    Field.phoneNumber("company_name",
+    Field.text("company_name",
         label: "Company Name",
-        style: "compact"
+        style: "default"
       ),
       Field.email("email",
         label: "Email",
-        style: "compact"
+        style: "default"
       ),
       Field.phoneNumber("phone",
         label: "Phone",
-        style: "compact"
+        style: "default"
       ),
     Field.phoneNumber("fax",
         label: "Fax",
-        style: "compact"
+        style: "default"
       ),
     Field.textArea("address",
         label: "address",
-        style: "compact"
+        style: "default"
       ),
     Field.textArea("notes",
-        label: "Notes",
-        style: "compact"
+        label: "Additional info",
+        style: "default"
     ),
   ];
   

@@ -1,3 +1,4 @@
+import '/app/networking/invoice_api_service.dart';
 import '../app/controllers/dashboard/customer_controller.dart';
 import '/app/controllers/dashboard/company_switcher_controller.dart';
 import '../app/networking/customer_api_service.dart';
@@ -69,6 +70,8 @@ final Map<Type, dynamic> apiDecoders = {
   CompanyApiService: CompanyApiService(),
 
   CustomerApiService: CustomerApiService(),
+
+  InvoiceApiService: InvoiceApiService(),
 };
 
 /* Controller Decoders

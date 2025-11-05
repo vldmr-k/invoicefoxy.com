@@ -7,13 +7,13 @@ import 'package:pocketbase/pocketbase.dart';
 class CustomerApiService extends NyApiService {
   CustomerApiService({BuildContext? buildContext}) : super(buildContext);
 
-  Future<ResultList<RecordModel>> all(String companyId, {
+  Future all(String companyID, {
     String filter = '', 
     int page = 1,
     int perPage = 30,
     String sort = "-created",
     }) async {
-    String _companyFilter = 'company="${companyId}"';
+    String _companyFilter = 'company="${companyID}"';
     printDebug(_companyFilter);
     return await OwnPocketBase.instance.collection(Customer.key).getList(
       filter: filter.isNotEmpty ? "${filter} && ${_companyFilter}" : _companyFilter,
@@ -23,23 +23,21 @@ class CustomerApiService extends NyApiService {
     );
   }
 
-  Future<Customer> find(String companyId, String id) async {
+  Future find(String companyId, String id) async {
     return await OwnPocketBase.instance.collection(Customer.key).getOne(id)
     .then((value) => Customer.fromRecord(value));
   }
 
-  Future<Customer> create(String companyId, Customer customer) async {
+  Future<RecordModel> create(String companyId, dynamic customer) async {
     return await OwnPocketBase.instance.collection(Customer.key).create(
-      body: {...customer.toJson(), "company": companyId},
-    )
-    .then((value) => Customer.fromRecord(value));
+      body: {...customer, "company": companyId},
+    );
   }
 
-  Future<Customer> update(String customerId, Customer customer) async {
+  Future<RecordModel> update(String customerId, Customer customer) async {
     return await OwnPocketBase.instance.collection(Customer.key).update(
       customerId,
       body: customer.toJson(),
-    )
-    .then((value) => Customer.fromRecord(value));
+    );
   }
 }

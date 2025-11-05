@@ -28,3 +28,19 @@ extension NyTextStyle on TextStyle {
     return copyWith(color: newColor(ThemeColor.get(context, themeId: themeId)));
   }
 }
+
+extension NyColor on Color {
+  Color get foxyColor => Color.fromARGB(255, 249, 115, 21);
+}
+
+
+extension ScreenSizeExtension on BuildContext {
+  double get screenWidth => MediaQuery.sizeOf(this).width;
+  double get screenHeight => MediaQuery.sizeOf(this).height;
+
+  bool get isMobile => screenWidth < 600;
+
+  bool get isTablet => screenWidth >= 600 && screenWidth < 1024;
+
+  bool get isDesktop => screenWidth >= 1024;
+}

@@ -21,7 +21,7 @@ void main() async {
     //   },
     // }
 
-    // showSplashScreen: true,
+    showSplashScreen: true,
     // Uncomment showSplashScreen to show the splash screen
     // File: lib/resources/widgets/splash_screen.dart
   );

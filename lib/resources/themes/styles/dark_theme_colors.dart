@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invoicefoxy_all/bootstrap/helpers.dart';
 import '/resources/themes/styles/color_styles.dart';
 
 /* Dark Theme Colors
@@ -55,4 +56,7 @@ class DarkThemeColors implements ColorStyles {
   // toast notification
   @override
   Color get toastNotificationBackground => const Color(0xff3e4447);
+  
+  //input
+  Color get inputBackground => ThemeColor.fromHex('#f5f5f5');
 }

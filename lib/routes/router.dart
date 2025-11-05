@@ -1,3 +1,6 @@
+import 'package:invoicefoxy_all/config/keys.dart';
+
+import '../resources/pages/dashboard/settings_page.dart';
 import 'package:invoicefoxy_all/app/models/customer.dart';
 
 import '/resources/pages/dashboard/company_switcher_page.dart';
@@ -55,20 +58,27 @@ appRouter() => nyRoutes((router) {
 
   router.add(CompanySwitcherPage.path)
     .addRouteGuards([AuthRouteGuard(), CheckCompanySelectedRouteGuard()])
-    .authenticatedRoute();
+    .authenticatedRoute(when: () => Keys.companySelected.fromBackpack() == "");
+
+
+  //navigation
+  router.add(DashboardNavigationHub.path)
+    .addRouteGuards([AuthRouteGuard()])
+    .authenticatedRoute(when: () => Keys.companySelected.fromBackpack() != "");
 
   router.group(() => {
     "route_guards": [AuthRouteGuard()],
     "prefix": "/dashboard"
   }, (router) {
-    //navigation
-    router.add(DashboardNavigationHub.path);
+    
 
     //onboarding
     router.add(OnboardingCompanyNavigationHub.path);
 
     //pages
     // router.add(CustomerPage.path);
+    router.add(SettingsPage.path);
+
     
   });
 

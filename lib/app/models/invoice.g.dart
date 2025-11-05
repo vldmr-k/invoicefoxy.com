@@ -64,16 +64,17 @@ const _$DocumentTypeEnumMap = {
 const _$DueTypeEnumMap = {
   DueType.onReceipt: 'on_receipt',
   DueType.customDate: 'custom_date',
+  DueType.none: '',
 };
 
 const _$TaxTypeEnumMap = {
   TaxType.perItem: 'per_item',
   TaxType.onTotal: 'on_total',
-  TaxType.none: null,
+  TaxType.none: '',
 };
 
 const _$DiscounTypeEnumMap = {
   DiscounType.fixed: 'fixed',
   DiscounType.percentage: 'percentage',
-  DiscounType.none: null,
+  DiscounType.none: '',
 };

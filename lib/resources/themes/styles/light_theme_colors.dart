@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invoicefoxy_all/bootstrap/helpers.dart';
 import '/resources/themes/styles/color_styles.dart';
 
 /* Light Theme Colors
@@ -12,7 +13,7 @@ class LightThemeColors implements ColorStyles {
   @override
   Color get content => const Color(0xFF000000);
   @override
-  Color get primaryAccent => const Color(0xFF0045a0);
+  Color get primaryAccent => const Color.fromARGB(255, 0, 0, 0);
 
   @override
   Color get surfaceBackground => Colors.white;
@@ -21,21 +22,20 @@ class LightThemeColors implements ColorStyles {
 
   // app bar
   @override
-  Color get appBarBackground => Colors.blue;
+  Color get appBarBackground => const Color.fromARGB(255, 255, 255, 255);
   @override
-  Color get appBarPrimaryContent => Colors.white;
+  Color get appBarPrimaryContent => const Color.fromARGB(255, 0, 0, 0);
 
   // buttons
   @override
-  Color get buttonBackground => Colors.blue;
+  Color get buttonBackground => const Color.fromARGB(255, 0, 0, 0);
   @override
   Color get buttonContent => Colors.white;
 
   @override
   Color get buttonSecondaryBackground => const Color(0xff151925);
   @override
-  Color get buttonSecondaryContent =>
-      Colors.white.withAlpha((255.0 * 0.9).round());
+  Color get buttonSecondaryContent => Colors.white.withAlpha((255.0 * 0.9).round());
 
   // bottom tab bar
   @override
@@ -43,9 +43,9 @@ class LightThemeColors implements ColorStyles {
 
   // bottom tab bar - icons
   @override
-  Color get bottomTabBarIconSelected => Colors.blue;
+  Color get bottomTabBarIconSelected => Colors.black;
   @override
-  Color get bottomTabBarIconUnselected => Colors.black54;
+  Color get bottomTabBarIconUnselected => Colors.black45;
 
   // bottom tab bar - label
   @override
@@ -56,4 +56,9 @@ class LightThemeColors implements ColorStyles {
   // toast notification
   @override
   Color get toastNotificationBackground => Colors.white;
+
+  //input
+
+  @override
+  Color get inputBackground => Colors.grey.shade200;
 }

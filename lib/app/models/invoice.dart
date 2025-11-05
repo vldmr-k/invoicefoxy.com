@@ -16,6 +16,8 @@ enum DueType {
   onReceipt,
   @JsonValue('custom_date')
   customDate,
+  @JsonValue("")
+  none
 }
 
 enum TaxType {
@@ -23,7 +25,7 @@ enum TaxType {
   perItem,
   @JsonValue('on_total')
   onTotal,
-  @JsonValue(null)
+  @JsonValue("")
   none,
 }
 
@@ -32,7 +34,7 @@ enum DiscounType {
   fixed,
   @JsonValue('percentage')
   percentage,
-  @JsonValue(null)
+  @JsonValue("")
   none,
 }
 
@@ -52,28 +54,28 @@ class Invoice extends Model {
   DueType? dueType;
 
   @JsonKey(name: "due_date")
-  DateTime? dueDate = null;
+  DateTime? dueDate;
 
   @JsonKey(name: "internal_number")
-  String? internalNumber = null;
+  String? internalNumber;
 
   @JsonKey(name: "headline")
-  String? headline = null;
+  String? headline;
 
   @JsonKey(name: "notes")
-  String? notes = null;
+  String? notes;
 
   @JsonKey(name: "tax_type")
-  TaxType? taxType = null;
+  TaxType? taxType;
 
   @JsonKey(name: "tax_rate")
-  int? taxRate = null;
+  int? taxRate;
 
-  @JsonKey(name: "discount_type")
-  DiscounType? discountType = null;
+  @JsonKey(name: "discount_type", defaultValue: DiscounType.none)
+  DiscounType? discountType;
 
   @JsonKey(name: "discount_rate")
-  int? discountRate = null;
+  int? discountRate;
 
   @JsonKey(name: "total")
   int total = 0;
