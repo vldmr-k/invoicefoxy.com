@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../../../pocketbase"
+		},
+		{
+			"path": "../../../supabase"
 		}
 	],
 	"settings": {}

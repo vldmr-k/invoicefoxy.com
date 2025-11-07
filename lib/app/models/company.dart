@@ -21,6 +21,9 @@ class Company extends Model {
   String license;
   String createdby;
 
+  String country;
+  String currency;
+
   static StorageKey key = "companies";
   
   Company({
@@ -33,7 +36,9 @@ class Company extends Model {
     this.website = '',
     this.address = '',
     this.license = '',
-    this.createdby = ''
+    this.createdby = '',
+    this.country = '',
+    this.currency = '',
   }) : super(key: key);
   
   /// Creates a new User instance form the provided RecordModel.

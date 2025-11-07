@@ -1,5 +1,6 @@
 import 'package:invoicefoxy_all/app/networking/auth_service.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import 'package:supabase/supabase.dart';
 import '/app/models/user.dart';
 import 'controller.dart';
 import 'package:pocketbase/pocketbase.dart';
@@ -11,15 +12,13 @@ class LoginController extends Controller {
   login(String email, String password) async {
      
      try {
-      final user = await api<AuthService>(
+      final AuthResponse response = await api<AuthService>(
           (request) => request.loginWithPassword(email, password)
       );
-      await Auth.authenticate(data: user);
-      showToastSuccess(description: 'Welcome ${user.name ?? ''}!');
+      Auth.authenticate(data: response.user?.toJson());
       routeToAuthenticatedRoute();
-     } on ClientException catch (error)  {
-        printDebug("Error: ${error}");
-        showToastSorry(description: error.response?['message'] ?? 'Something went wrong, please try again later.');
+     } on AuthApiException catch (error)  {
+        showToastSorry(description: error.message);
      } catch (error) {
       printError(error);
      }

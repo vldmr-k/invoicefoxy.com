@@ -14,11 +14,11 @@ class CompanySwitcherController extends Controller {
     super.construct(context);
   }
 
-  all({int page = 1}) async {
+  all({page = 1}) async {
     return await api<CompanyApiService>(
         (request) => request.all(page: page)
-    ).then((value) {
-      return value.items.map((e) => Company.fromRecord(e)).toList();
+    ).then((items) {
+      return items.map((e) => Company.fromJson(e)).toList();
     });
   }
 

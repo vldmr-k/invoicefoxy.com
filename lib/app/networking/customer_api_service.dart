@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:invoicefoxy_all/app/models/customer.dart';
-import 'package:invoicefoxy_all/app/providers/pocketbase_provider.dart';
+import 'package:invoicefoxy_all/bootstrap/helpers.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import 'package:pocketbase/pocketbase.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class CustomerApiService extends NyApiService {
   CustomerApiService({BuildContext? buildContext}) : super(buildContext);
@@ -10,34 +10,36 @@ class CustomerApiService extends NyApiService {
   Future all(String companyID, {
     String filter = '', 
     int page = 1,
-    int perPage = 30,
-    String sort = "-created",
+    int limit = 30,
+    SortOption order = const SortOption('created_at', false), // ascending = false means descending
     }) async {
-    String _companyFilter = 'company="${companyID}"';
-    printDebug(_companyFilter);
-    return await OwnPocketBase.instance.collection(Customer.key).getList(
-      filter: filter.isNotEmpty ? "${filter} && ${_companyFilter}" : _companyFilter,
-      sort: sort,
-      page: page,
-      perPage: perPage,
-    );
+    final (from, to) = Pagination.range(page, limit);
+    var query =  await Supabase.instance.client.from(Customer.key)
+      .select()
+      .eq('company_id', companyID)
+      .order(order.column, ascending: order.ascending)
+      .range(from, to);
+
+    return query;
   }
 
   Future find(String companyId, String id) async {
-    return await OwnPocketBase.instance.collection(Customer.key).getOne(id)
-    .then((value) => Customer.fromRecord(value));
+    return await  Supabase.instance.client.from(Customer.key)
+      .select()
+      .eq('company_id', companyId)
+      .eq('id', id)
+      .maybeSingle();
   }
 
-  Future<RecordModel> create(String companyId, dynamic customer) async {
-    return await OwnPocketBase.instance.collection(Customer.key).create(
-      body: {...customer, "company": companyId},
-    );
+  Future create(String companyId, dynamic customer) async {
+    return await Supabase.instance.client.from(Customer.key).insert(
+      {...customer, "company_id": companyId},
+    ).select().maybeSingle();
   }
 
-  Future<RecordModel> update(String customerId, Customer customer) async {
-    return await OwnPocketBase.instance.collection(Customer.key).update(
-      customerId,
-      body: customer.toJson(),
-    );
+  Future update(String customerId, Customer customer) async {
+    return await Supabase.instance.client.from(Customer.key).update(  
+       customer.toJson(),
+    ).eq('id', customerId).select();
   }
 }

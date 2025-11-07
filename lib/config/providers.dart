@@ -1,3 +1,4 @@
+import '/app/providers/supabase_provider.dart';
 import '/app/providers/pocketbase_provider.dart';
 import '/app/providers/push_notifications_provider.dart';
 import '/app/providers/app_provider.dart';
@@ -20,4 +21,6 @@ final Map<Type, NyProvider> providers = {
   PushNotificationsProvider: PushNotificationsProvider(),
 
   PocketbaseProvider: PocketbaseProvider(),
+
+  SupabaseProvider: SupabaseProvider(),
 };

@@ -3,15 +3,13 @@ import 'package:invoicefoxy_all/app/models/company.dart';
 import 'package:invoicefoxy_all/app/models/user.dart';
 import 'package:invoicefoxy_all/app/providers/pocketbase_provider.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import 'package:pocketbase/pocketbase.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class CompanyApiService extends NyApiService {
   CompanyApiService({BuildContext? buildContext}) : super(buildContext);
 
-  Future<ResultList<RecordModel>> all({int page = 1}) async {
-    return await OwnPocketBase.instance.collection('companies').getList(
-      page: page
-    );
+  Future all({int page = 1}) async {
+    return await Supabase.instance.client.from(Company.key).select("*, company_members(role)");
   }
 
   Future<Company> find(String id) async {

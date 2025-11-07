@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:invoicefoxy_all/app/models/company.dart';
 import 'package:invoicefoxy_all/app/networking/company_api_service.dart';
+import 'package:invoicefoxy_all/resources/widgets/layout/scaffold_widget.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import '/app/controllers/dashboard/company_switcher_controller.dart';
 
@@ -22,11 +23,8 @@ class _CompanySwitcherPageState extends NyPage<CompanySwitcherPage> {
   
  @override
   Widget build(BuildContext context) {
-  return Scaffold(
-      appBar: AppBar(
-        title: Text('Company Switcher', style: TextStyle(color: Colors.black),),
-        backgroundColor: Colors.transparent,
-      ),
+  return ScaffoldWidget(
+      title: Text('Select Company'),
       body: SafeArea(
           child: NyPullToRefresh.separated(
               

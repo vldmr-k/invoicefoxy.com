@@ -17,6 +17,8 @@ Company _$CompanyFromJson(Map<String, dynamic> json) => Company(
       address: json['address'] as String? ?? '',
       license: json['license'] as String? ?? '',
       createdby: json['createdby'] as String? ?? '',
+      country: json['country'] as String? ?? '',
+      currency: json['currency'] as String? ?? '',
     );
 
 Map<String, dynamic> _$CompanyToJson(Company instance) => <String, dynamic>{
@@ -30,4 +32,6 @@ Map<String, dynamic> _$CompanyToJson(Company instance) => <String, dynamic>{
       'address': instance.address,
       'license': instance.license,
       'createdby': instance.createdby,
+      'country': instance.country,
+      'currency': instance.currency,
     };

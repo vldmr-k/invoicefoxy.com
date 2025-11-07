@@ -1,3 +1,6 @@
+import '/app/networking/item_api_service.dart';
+import '/app/models/item.dart';
+import '/app/controllers/dashboard/items_controller.dart';
 import '/app/networking/invoice_api_service.dart';
 import '../app/controllers/dashboard/customer_controller.dart';
 import '/app/controllers/dashboard/company_switcher_controller.dart';
@@ -50,6 +53,10 @@ final Map<Type, dynamic> modelDecoders = {
   List<Customer>: (data) => List.from(data).map((json) => Customer.fromJson(json)).toList(),
 
   Customer: (data) => Customer.fromJson(data),
+
+  //List<Item>: (data) => List.from(data).map((json) => Item.fromJson(json)).toList(),
+
+  //Item: (data) => Item.fromJson(data),
 };
 
 /* API Decoders
@@ -72,6 +79,8 @@ final Map<Type, dynamic> apiDecoders = {
   CustomerApiService: CustomerApiService(),
 
   InvoiceApiService: InvoiceApiService(),
+
+  ItemApiService: ItemApiService(),
 };
 
 /* Controller Decoders
@@ -99,4 +108,6 @@ final Map<Type, dynamic> controllers = {
   CompanySwitcherController: () => CompanySwitcherController(),
 
   CustomerController: () => CustomerController(),
+
+  ItemsController: () => ItemsController(),
 };

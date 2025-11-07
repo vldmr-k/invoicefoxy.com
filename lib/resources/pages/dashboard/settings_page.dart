@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:invoicefoxy_all/app/events/logout_event.dart';
+import 'package:invoicefoxy_all/resources/pages/dashboard/company_switcher_page.dart';
+import 'package:invoicefoxy_all/resources/widgets/buttons/buttons.dart';
+import 'package:invoicefoxy_all/resources/widgets/layout/safearea_widget.dart';
+import 'package:invoicefoxy_all/resources/widgets/layout/scaffold_widget.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 class SettingsPage extends NyStatefulWidget {
@@ -17,12 +22,25 @@ class _SettingsPageState extends NyPage<SettingsPage> {
 
   @override
   Widget view(BuildContext context) {
-    return Scaffold(
+    return ScaffoldWidget(
       appBar: AppBar(
-        title: Text("Settings")
+        title: const Text("Settings"),
       ),
-      body: SafeArea(
-         child: Container(),
+      body: Column(
+        children: [
+          Button.rounded(
+            text: "Logout",
+            onPressed: () async {
+              event<LogoutEvent>();
+            },
+          ),
+          Button.rounded(
+            text: "Switch Company",
+            onPressed: () async {
+              routeTo(CompanySwitcherPage.path);
+            },
+          ),
+        ],
       ),
     );
   }

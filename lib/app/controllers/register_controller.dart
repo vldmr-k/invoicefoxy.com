@@ -17,7 +17,9 @@ class RegisterController extends Controller {
           (request) => request.registerUser(email, password, name)
       );
 
-      printDebug(result);
+      await Auth.authenticate(data: result.user);
+      //showToastSuccess(description: 'Welcome ${result.user.name ?? ''}!');
+      routeToAuthenticatedRoute();
     
     } on ClientException catch (error) {
       printDebug("Error: ${error}");

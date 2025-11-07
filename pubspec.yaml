@@ -4,6 +4,8 @@
 # Official repository: https://github.com/nylo-core/nylo
 # Author: Anthony Gordon <https://github.com/agordn52>
 
+# https://pub.dev/packages/introduction_screen
+
 name: invoicefoxy_all
 description: InvoiceFoxy application for generate and management invoices
 
@@ -34,6 +36,10 @@ dependencies:
   json_serializable: ^6.11.1
   shared_preferences: ^2.5.3
   wolt_modal_sheet: ^0.11.0
+  world_countries: ^3.9.3
+  supabase: ^2.10.0
+  supabase_flutter: ^2.10.3
+  hugeicons: ^1.1.1
 
 dev_dependencies:
   rename: ^3.1.0

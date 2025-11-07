@@ -7,38 +7,41 @@ part 'customer.g.dart';
 @JsonSerializable()
 class Customer extends Model {
 
+
   String id;
   String name;
-  String phone;
-  String fax;
-  String address;
+  String? phone;
+  String? fax;
+  String? address;
 
   @JsonKey(name: "company_name")
-  String companyName;
+  String? companyName;
 
   @JsonKey(name: "internal_number")
-  String internalNumber;
+  String? internalNumber;
 
-  int rating;
+  int rating = 0;
 
-  String notes;
+  String? notes;
 
-  static StorageKey key = "customers";
+  @JsonKey(name: "total_revenue")
+  int total = 0;
+  @JsonKey(name: "total_due")
+  int totalDue = 0;
+
+  static StorageKey key = "clients";
   
   Customer({
     this.id = '',
     this.name = '',
-    this.phone = '',
-    this.fax = '',
-    this.address = '',
-    this.companyName = '',
-    this.internalNumber = '',
+    this.phone,
+    this.fax,
+    this.address,
+    this.companyName,
+    this.internalNumber,
     this.rating = 0,
-    this.notes = ''
+    this.notes
   }) : super(key: key);
-  
-  /// Creates a new User instance form the provided RecordModel.
-  factory Customer.fromRecord(RecordModel record) => Customer.fromJson(record.toJson());
   
   /// Connect the generated [_$Customer] function to the `fromJson` factory.
   factory Customer.fromJson(Map<String, dynamic> json) => _$CustomerFromJson(json);

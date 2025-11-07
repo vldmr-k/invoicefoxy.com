@@ -4,26 +4,23 @@ import '/app/models/user.dart';
 import '/config/decoders.dart';
 import '/config/keys.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthService extends NyApiService {
   AuthService({BuildContext? buildContext}) : super(buildContext);
 
-  Future registerUser(String email, String password, String name) async {
-    return await OwnPocketBase.instance.collection("users").create(
-      body: {
-        "name": name,
-        "email": email, 
-        "password": password, 
-        "passwordConfirm": password, 
-      }
+  Future<AuthResponse> registerUser(String email, String password, String name) async {
+    return await Supabase.instance.client.auth.signUp(
+      email: email,
+      password: password,
     );
   }
 
-  Future loginWithPassword(String identity, String password) async {
-    return await OwnPocketBase.instance.collection("users").authWithPassword(identity, password).then((result) {
-      return User.fromRecord(result.record);
-    });
-      
+  Future<AuthResponse> loginWithPassword(String identity, String password) async {
+    return await Supabase.instance.client.auth.signInWithPassword(
+      email: identity,
+      password: password,
+    );
   }
 
   Future<dynamic> refreshUserToken(String refreshToken) async {

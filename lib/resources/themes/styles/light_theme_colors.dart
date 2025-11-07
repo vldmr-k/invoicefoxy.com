@@ -43,7 +43,7 @@ class LightThemeColors implements ColorStyles {
 
   // bottom tab bar - icons
   @override
-  Color get bottomTabBarIconSelected => Colors.black;
+  Color get bottomTabBarIconSelected => ThemeColor.fromHex('#181834');
   @override
   Color get bottomTabBarIconUnselected => Colors.black45;
 

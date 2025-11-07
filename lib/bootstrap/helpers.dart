@@ -14,3 +14,15 @@ class ThemeColor {
 
   static Color fromHex(String hexColor) => nyHexColor(hexColor);
 }
+
+
+class Pagination {
+  static (int from, int to) range(int page, int limit) =>
+      ((page - 1) * limit, page * limit - 1);
+}
+
+class SortOption {
+  final String column;
+  final bool ascending;
+  const SortOption(this.column, this.ascending);
+}
