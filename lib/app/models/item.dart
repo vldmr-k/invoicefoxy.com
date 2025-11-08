@@ -43,7 +43,7 @@ class Item extends Model {
   static StorageKey key = "items";
 
   String? id;
-  String? name;
+  String name;
   String? description;
 
   @ItemTypeConverter() 
@@ -53,7 +53,7 @@ class Item extends Model {
   num price = 0;
 
   @JsonKey(name: "is_taxable")
-  bool taxable = false;
+  bool isTaxable = false;
 
   @JsonKey(name: "total_amount")
   num totalAmount = 0;
@@ -67,7 +67,7 @@ class Item extends Model {
     this.description,
     this.type = ItemType.none,
     this.price = 0,
-    this.taxable = false,
+    this.isTaxable = false,
     this.totalAmount = 0,
     this.totalSold = 0,
   }) : super(key: key);

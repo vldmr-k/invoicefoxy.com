@@ -11,6 +11,7 @@ class CheckCompanySelectedRouteGuard extends NyRouteGuard {
 
   @override
   onRequest(PageRequest pageRequest) async {
+
     // // Default
     String? companySelectedId = await Keys.companySelected.read();
     if (companySelectedId == null) {

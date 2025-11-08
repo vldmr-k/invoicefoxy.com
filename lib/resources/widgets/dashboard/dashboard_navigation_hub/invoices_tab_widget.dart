@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:invoicefoxy_all/app/controllers/dashboard/invoice_controller.dart';
 import 'package:invoicefoxy_all/app/forms/invoice_form.dart';
 import 'package:invoicefoxy_all/app/models/invoice.dart';
+import 'package:invoicefoxy_all/resources/pages/dashboard/invoice/invoice_builder_page.dart';
 import 'package:invoicefoxy_all/resources/widgets/buttons/buttons.dart';
 import 'package:invoicefoxy_all/resources/widgets/layout/safearea_widget.dart';
+import 'package:invoicefoxy_all/resources/widgets/layout/scaffold_widget.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 class InvoicesTab extends StatefulWidget {
@@ -25,22 +27,21 @@ class _InvoicesTabState extends NyState<InvoicesTab> {
 
   @override
   Widget view(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Invoices", style: TextStyle(color: Colors.black),),
-        backgroundColor: Colors.transparent,
-      ),
+    return ScaffoldWidget(
+      title: Text("Invoices"),
+      floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            routeTo(InvoiceBuilderPage.path);
+          },
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+          label: Text("Create Invoice"),
+          icon: Icon(Icons.add),
+        ),
       body: SafeAreaWidget(
           
           child: Container(
             child: Column(
               children: [
-                Button.gradientFoxy(
-                    text: "Create Invoice",
-                    onPressed: () {
-                      showToastInfo(description: "Add a new invoice");
-                    },
-                  ),
                 Expanded(
                   child: _list(),
                 ),

@@ -1,3 +1,5 @@
+import '/app/controllers/dashboard/invoice/invoice_preview_controller.dart';
+import '/app/controllers/dashboard/invoice/invoice_builder_controller.dart';
 import '/app/networking/item_api_service.dart';
 import '/app/models/item.dart';
 import '/app/controllers/dashboard/items_controller.dart';
@@ -110,4 +112,9 @@ final Map<Type, dynamic> controllers = {
   CustomerController: () => CustomerController(),
 
   ItemsController: () => ItemsController(),
+
+
+  InvoiceBuilderController: () => InvoiceBuilderController(),
+
+  InvoicePreviewController: () => InvoicePreviewController(),
 };

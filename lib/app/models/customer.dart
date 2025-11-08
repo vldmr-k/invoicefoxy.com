@@ -10,6 +10,7 @@ class Customer extends Model {
 
   String id;
   String name;
+  String? email;
   String? phone;
   String? fax;
   String? address;
@@ -34,6 +35,7 @@ class Customer extends Model {
   Customer({
     this.id = '',
     this.name = '',
+    this.email,
     this.phone,
     this.fax,
     this.address,

@@ -26,6 +26,13 @@ class CustomerController extends Controller {
     });
   }
 
+  Future<Customer?> find(String id) async {
+    return await api<CustomerApiService>(
+        (request) => request.find(id)
+        .then((value) => Customer.fromJson(value))
+    );
+  }
+
   Future<Customer?> create(dynamic customer) async {
     try {
       final value = await api<CustomerApiService>(

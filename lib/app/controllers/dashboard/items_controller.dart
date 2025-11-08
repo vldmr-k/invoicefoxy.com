@@ -31,7 +31,7 @@ class ItemsController extends Controller {
   Future<Item?> create(Map<String, dynamic> item) async {
     try {
       return await api<ItemApiService>(
-            (request) => request.create(this.companyID, item)
+            (request) => request.create(this.companyID, Item.fromJson(item))
         ).then((value) {
           return Item.fromJson(value);
         });
@@ -41,13 +41,23 @@ class ItemsController extends Controller {
     }
   }
 
-  Future<Item?> update(String id, Map<String, dynamic> item) async {
+  Future<Item?> update(String id, dynamic item) async {
     try {
       return await api<ItemApiService>(
           (request) => request.update(id, Item.fromJson(item))
       ).then((value) {
         return Item.fromJson(value);
       });
+    } catch (e) {
+      showToastOops(description: e.toString());
+    }
+  }
+
+  Future<void> delete(String id) async {
+    try {
+      await api<ItemApiService>(
+          (request) => request.archive(id)
+      );
     } catch (e) {
       showToastOops(description: e.toString());
     }

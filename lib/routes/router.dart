@@ -1,3 +1,7 @@
+import '/resources/pages/dashboard/invoice/invoice_preview_page.dart';
+import '/resources/pages/dashboard/invoice/invoice_builder_page.dart';
+import 'package:invoicefoxy_all/resources/pages/dashboard/customer/customer_show_page.dart';
+
 import '/resources/pages/dashboard/items_page.dart';
 import 'package:invoicefoxy_all/config/keys.dart';
 
@@ -81,7 +85,12 @@ appRouter() => nyRoutes((router) {
     router.add(SettingsPage.path);
     router.add(ItemsPage.path);
 
-    
+    router.add(CustomerShowPage.path);
+
+
+    //invoice
+    router.add(InvoiceBuilderPage.path);
+    router.add(InvoicePreviewPage.path);
   });
 
   router.add(NotFoundPage.path).unknownRoute();

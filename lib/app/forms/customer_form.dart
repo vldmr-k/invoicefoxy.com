@@ -15,10 +15,10 @@ class CustomerForm extends NyFormData {
 
   @override
   fields() => [
-     Field.text("Name",
+     Field.capitalizeWords("name",
         label: "Name",
         validate: FormValidator.notEmpty(),
-        style: "default"
+        style: "default",
     ),
     Field.text("company_name",
         label: "Company Name",

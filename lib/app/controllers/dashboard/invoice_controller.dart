@@ -26,13 +26,13 @@ class InvoiceController extends Controller {
 
   Future all({int page = 1}) async {
     return await api<InvoiceApiService>(
-        (request) => request.all(this.companyID, page: page)
-    ).then((value) => value.items.map((e) => Invoice.fromRecord(e)).toList());
+        (request) => request.all(page: page)
+    ).then((value) => value.map((e) => Invoice.fromJson(e)).toList());
   }
 
   create(Invoice invoice) async {
     return await api<InvoiceApiService>(
-        (request) => request.create(this.companyID, this.userId, invoice)  
+        (request) => request.create(this.companyID, invoice)  
     );
   }
 

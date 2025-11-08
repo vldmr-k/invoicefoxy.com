@@ -44,9 +44,10 @@ class ItemForm extends NyFormData {
         footer: Text("Price per unit"),
         style: "default",
       ),
-      Field.switchBox("taxable",
+      Field.switchBox("isTaxable",
           label: "Taxable",
           style: "default",
+          selected: false,
       ),
     ],
     

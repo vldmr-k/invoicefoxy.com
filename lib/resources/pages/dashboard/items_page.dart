@@ -3,6 +3,7 @@ import 'package:invoicefoxy_all/app/forms/item_form.dart';
 import 'package:invoicefoxy_all/app/models/item.dart';
 import 'package:invoicefoxy_all/bootstrap/extensions.dart';
 import 'package:invoicefoxy_all/resources/widgets/buttons/buttons.dart';
+import 'package:invoicefoxy_all/resources/widgets/cards/item_list_card_widget.dart';
 import 'package:invoicefoxy_all/resources/widgets/layout/scaffold_widget.dart';
 import 'package:invoicefoxy_all/resources/widgets/modal/modal_page_builder_widget.dart';
 import 'package:nylo_framework/nylo_framework.dart';
@@ -61,14 +62,9 @@ class _ItemsPageState extends NyPage<ItemsPage> {
     return NyPullToRefresh.separated(
       stateName: this.key,
         child: (BuildContext context, dynamic data) {
-          return ListTile(
-          title: Text(data.name),
-          trailing: Text("\$${data.price}", style: TextStyle(fontSize: 16.0),),
-          onTap: () {
+          return ItemListCardWidget(item: data, onTap: () {
             _openBox(item: data);
-            //showToastInfo(description: "Customer tapped: ${data.name}");
-          },
-        );
+          });
         },
         data: (int page) async {
              return await controller.all(page: page);

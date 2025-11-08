@@ -107,11 +107,6 @@ class Invoice extends Model {
     this.updated = null,
   }) : super(key: key);
 
-
-  /// Creates a new User instance form the provided RecordModel.
-  factory Invoice.fromRecord(RecordModel record) => Invoice.fromJson(record.toJson());
-
-
   /// Connect the generated [_$Invoice] function to the `fromJson` factory.
   factory Invoice.fromJson(Map<String, dynamic> json) => _$InvoiceFromJson(json);
 

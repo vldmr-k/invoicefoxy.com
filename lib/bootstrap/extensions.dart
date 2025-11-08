@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:invoicefoxy_all/app/models/company.dart';
 import '/bootstrap/helpers.dart';
 import '/resources/themes/styles/color_styles.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import 'package:invoicefoxy_all/config/keys.dart';
 
 /// [Text] Extensions
 extension NyText on Text {
@@ -43,4 +45,12 @@ extension ScreenSizeExtension on BuildContext {
   bool get isTablet => screenWidth >= 600 && screenWidth < 1024;
 
   bool get isDesktop => screenWidth >= 1024;
+}
+
+extension CompanyContextExtension on BuildContext {
+  void setCompany(Company company) {
+    Keys.companySelected.saveJson(company, inBackpack: true);
+  }
+
+  Company getCompany() => Keys.companySelected.fromBackpack() as Company;
 }

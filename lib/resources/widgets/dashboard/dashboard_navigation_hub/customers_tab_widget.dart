@@ -3,12 +3,15 @@ import 'package:invoicefoxy_all/app/controllers/dashboard/customer_controller.da
 import 'package:invoicefoxy_all/app/forms/customer_form.dart';
 import 'package:invoicefoxy_all/app/models/customer.dart';
 import 'package:invoicefoxy_all/bootstrap/extensions.dart';
+import 'package:invoicefoxy_all/resources/pages/dashboard/customer/customer_show_page.dart';
 import 'package:invoicefoxy_all/resources/widgets/buttons/buttons.dart';
+import 'package:invoicefoxy_all/resources/widgets/cards/customer_list_card_widget.dart';
 import 'package:invoicefoxy_all/resources/widgets/layout/scaffold_widget.dart';
 import 'package:invoicefoxy_all/resources/widgets/modal/modal_page_builder_widget.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:invoicefoxy_all/config/keys.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
+
 
 class CustomersTab extends StatefulWidget {
   const CustomersTab({super.key});
@@ -33,8 +36,7 @@ class _CustomersTabState extends NyState<CustomersTab> {
           onPressed: () {
             _openBox();
           },
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
           label: Text("Add customer"),
           icon: Icon(Icons.add),
         ),
@@ -64,12 +66,11 @@ class _CustomersTabState extends NyState<CustomersTab> {
     return NyPullToRefresh.separated(
       stateName: _todoListViewStateName,
       child: (BuildContext context, dynamic data) {
-        return ListTile(
-          title: Text(data.name),
-          subtitle: Text("asdasd"),
-          onTap: () {
-            showToastInfo(description: "Customer tapped: ${data.name}");
-          },
+        return CustomerListCardWidget(
+          customer: data,
+          onTap: () => routeTo(
+            CustomerShowPage.path.withParams({"customerID": data.id}),
+          ),
         );
       },
       data: (int page) async {

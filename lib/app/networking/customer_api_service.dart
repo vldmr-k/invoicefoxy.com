@@ -23,10 +23,9 @@ class CustomerApiService extends NyApiService {
     return query;
   }
 
-  Future find(String companyId, String id) async {
+  Future find(String id) async {
     return await  Supabase.instance.client.from(Customer.key)
       .select()
-      .eq('company_id', companyId)
       .eq('id', id)
       .maybeSingle();
   }
