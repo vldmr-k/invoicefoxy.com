@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:invoicefoxy_all/app/models/document.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import '/app/controllers/dashboard/invoice_controller.dart';
+import '../../../../app/controllers/dashboard/document_controller.dart';
 
 class DocumentPreviewPage extends NyStatefulWidget<DocumentController> {
   static RouteView path = ("/document-preview/{invoiceID}", (_) => DocumentPreviewPage());

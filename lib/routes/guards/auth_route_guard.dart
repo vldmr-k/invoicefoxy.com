@@ -1,4 +1,3 @@
-import 'package:invoicefoxy_all/app/models/user.dart';
 import 'package:invoicefoxy_all/resources/pages/login_page.dart';
 
 import '/resources/pages/home_page.dart';

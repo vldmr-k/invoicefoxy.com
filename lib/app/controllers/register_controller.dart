@@ -1,9 +1,7 @@
 import 'package:invoicefoxy_all/app/networking/auth_service.dart';
-import 'package:pocketbase/pocketbase.dart';
 
 import '/app/controllers/controller.dart';
 import 'package:flutter/widgets.dart';
-import '/app/models/user.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 
@@ -21,15 +19,6 @@ class RegisterController extends Controller {
       //showToastSuccess(description: 'Welcome ${result.user.name ?? ''}!');
       routeToAuthenticatedRoute();
     
-    } on ClientException catch (error) {
-      printDebug("Error: ${error}");
-
-      if(error.response['data']?['email']?['code'] == 'validation_not_unique') {
-        showToastSorry(description: 'The email provided is already in use.');
-        return;
-      }
-
-      showToastSorry(description: error.toString());
     } catch (error) {
       showToastSorry(description: error.toString());
     }

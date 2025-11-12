@@ -1,6 +1,5 @@
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:json_annotation/json_annotation.dart';
-import "package:pocketbase/pocketbase.dart";
 
 part 'customer.g.dart';
 

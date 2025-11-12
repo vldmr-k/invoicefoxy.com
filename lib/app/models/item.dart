@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:json_annotation/json_annotation.dart';
-import "package:pocketbase/pocketbase.dart";
 import 'converter.dart';
 
 part 'item.g.dart';

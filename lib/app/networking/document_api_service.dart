@@ -10,7 +10,7 @@ class DocuemntApiService extends NyApiService {
 
   Future all({int page = 1, SortOption order = const SortOption("created_at", false)}) async {
     final (from, to) = Pagination.range(page, 30);
-    return await Supabase.instance.client.from(Document.key).select()
+    return await Supabase.instance.client.from(Document.key).select('*, companies(id, name), clients(id, name)')
       .isFilter('deleted_at', null)
       .order(order.column, ascending: order.ascending)
       .range(from, to);

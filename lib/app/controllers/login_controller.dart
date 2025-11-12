@@ -1,10 +1,7 @@
 import 'package:invoicefoxy_all/app/networking/auth_service.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:supabase/supabase.dart';
-import '/app/models/user.dart';
 import 'controller.dart';
-import 'package:pocketbase/pocketbase.dart';
-
 
 class LoginController extends Controller {
 

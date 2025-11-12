@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:invoicefoxy_all/app/models/company.dart';
-import 'package:invoicefoxy_all/app/models/user.dart';
-import 'package:invoicefoxy_all/app/providers/pocketbase_provider.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -12,23 +10,21 @@ class CompanyApiService extends NyApiService {
     return await Supabase.instance.client.from(Company.key).select("*, company_members(role)");
   }
 
-  Future<Company> find(String id) async {
-    return await OwnPocketBase.instance.collection('companies').getOne(id)
-    .then((value) => Company.fromRecord(value));
+  Future find(String id) async {
+    return await  Supabase.instance.client.from(Company.key)
+      .select()
+      .eq('id', id)
+      .maybeSingle();
   }
 
-  Future<Company> create(Company company) async {
-    final user = await Auth.data();
-    dynamic data = {...company.toJson(), "createdby": user['id']};
-    return await OwnPocketBase.instance.collection('companies').create(
-      body: data
-    ).then((value) => Company.fromRecord(value));
+  Future create(dynamic company) async {
+    return await Supabase.instance.client.from(Company.key).insert(company).select().maybeSingle();
   }
 
-  Future<Company> update(Company company) async {
-    return await OwnPocketBase.instance.collection('companies').update(
-      company.id,
-      body: company.toJson()
-    ).then((value) => Company.fromRecord(value));
+  Future update(String companyID, dynamic company) async {
+    return await Supabase.instance.client.from(Company.key)
+    .update(company)
+    .eq('id', companyID)
+    .select().maybeSingle();
   }
 }

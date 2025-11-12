@@ -845,14 +845,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
-  pocketbase:
-    dependency: "direct main"
-    description:
-      name: pocketbase
-      sha256: "85282448be07e1920742a3272737b08778e5548ada8cd5ada82d0a0228347d0c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.23.0+1"
   pool:
     dependency: transitive
     description:
@@ -1139,7 +1131,7 @@ packages:
     source: hosted
     version: "1.4.1"
   supabase:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: supabase
       sha256: fc5bf5518f1594a0809203fa406a5094239dd1a8d090db6ebf24d6e238fcd8b3

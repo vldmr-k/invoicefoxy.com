@@ -1,8 +1,8 @@
+import '../app/controllers/dashboard/company_controller.dart';
+import '../app/controllers/dashboard/document_controller.dart';
 import '/app/networking/item_api_service.dart';
-import '/app/models/item.dart';
 import '/app/controllers/dashboard/items_controller.dart';
 import '../app/controllers/dashboard/customer_controller.dart';
-import '/app/controllers/dashboard/company_switcher_controller.dart';
 import '../app/networking/customer_api_service.dart';
 import '../app/networking/document_api_service.dart';
 
@@ -10,7 +10,6 @@ import '../app/models/customer.dart';
 import '/app/controllers/company_onboarding_controller.dart';
 import '/app/networking/company_api_service.dart';
 import '/app/models/company.dart';
-import '../app/models/document.dart';
 import '../app/networking/auth_service.dart';
 import '/app/models/organization.dart';
 import '/app/controllers/dashboard_controller.dart';
@@ -18,7 +17,6 @@ import '/app/controllers/forgot_password_controller.dart';
 import '/app/controllers/register_controller.dart';
 import '/app/controllers/login_controller.dart';
 import '/app/controllers/home_controller.dart';
-import '/app/models/user.dart';
 import '/app/networking/api_service.dart';
 
 /* Model Decoders
@@ -31,11 +29,6 @@ import '/app/networking/api_service.dart';
 
 final Map<Type, dynamic> modelDecoders = {
   Map<String, dynamic>: (data) => Map<String, dynamic>.from(data),
-
-  List<User>: (data) =>
-      List.from(data).map((json) => User.fromJson(json)).toList(),
-  //
-  User: (data) => User.fromJson(data),
 
   // User: (data) => User.fromJson(data),
 
@@ -102,9 +95,11 @@ final Map<Type, dynamic> controllers = {
 
   CompanyOnboardingController: () => CompanyOnboardingController(),
 
-  CompanySwitcherController: () => CompanySwitcherController(),
-
   CustomerController: () => CustomerController(),
 
   ItemsController: () => ItemsController(),
+
+  CompanyController: () => CompanyController(),
+  
+  DocumentController: () => DocumentController(),
 };

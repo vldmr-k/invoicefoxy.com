@@ -3,9 +3,9 @@ import 'package:invoicefoxy_all/app/models/company.dart';
 import 'package:invoicefoxy_all/app/networking/company_api_service.dart';
 import 'package:invoicefoxy_all/resources/widgets/layout/scaffold_widget.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import '/app/controllers/dashboard/company_switcher_controller.dart';
+import '/app/controllers/dashboard/company_controller.dart';
 
-class CompanySwitcherPage extends NyStatefulWidget<CompanySwitcherController> {
+class CompanySwitcherPage extends NyStatefulWidget<CompanyController> {
   static RouteView path = ("/company-switcher", (_) => CompanySwitcherPage());
 
   CompanySwitcherPage({super.key}) : super(child: () => _CompanySwitcherPageState());
@@ -13,8 +13,8 @@ class CompanySwitcherPage extends NyStatefulWidget<CompanySwitcherController> {
 
 class _CompanySwitcherPageState extends NyPage<CompanySwitcherPage> {
 
-  /// [CompanySwitcherController] controller
-  CompanySwitcherController get controller => widget.controller;
+  /// [CompanyController] controller
+  CompanyController get controller => widget.controller;
 
  @override
   get init => () {

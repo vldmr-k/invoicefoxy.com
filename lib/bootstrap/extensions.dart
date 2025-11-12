@@ -48,9 +48,7 @@ extension ScreenSizeExtension on BuildContext {
 }
 
 extension CompanyContextExtension on BuildContext {
-  void setCompany(Company company) {
-    Keys.companySelected.saveJson(company, inBackpack: true);
-  }
-
-  Company getCompany() => Keys.companySelected.fromBackpack() as Company;
+  set currentCompanyID(String id) => Keys.companySelected.save(id, inBackpack: true);
+  String get currentCompanyID => Keys.companySelected.fromBackpack(defaultValue: "");
+  removeCurrentCompanyId() => Keys.companySelected.deleteFromStorage(andFromBackpack: true);
 }

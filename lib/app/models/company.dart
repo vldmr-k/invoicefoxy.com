@@ -1,6 +1,4 @@
-import 'package:invoicefoxy_all/app/models/user.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import "package:pocketbase/pocketbase.dart";
 import 'package:json_annotation/json_annotation.dart';
 
 part 'company.g.dart';
@@ -40,9 +38,6 @@ class Company extends Model {
     this.country = '',
     this.currency = '',
   }) : super(key: key);
-  
-  /// Creates a new User instance form the provided RecordModel.
-  factory Company.fromRecord(RecordModel record) => Company.fromJson(record.toJson());
   
   /// Connect the generated [_$Company] function to the `fromJson` factory.
   factory Company.fromJson(Map<String, dynamic> json) => _$CompanyFromJson(json);

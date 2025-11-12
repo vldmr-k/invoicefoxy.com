@@ -1,5 +1,6 @@
 import 'package:invoicefoxy_all/app/models/document.dart';
 import 'package:invoicefoxy_all/app/networking/document_api_service.dart';
+import 'package:invoicefoxy_all/bootstrap/extensions.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 import '/app/controllers/controller.dart';
@@ -8,21 +9,11 @@ import '/config/keys.dart';
 
 class DocumentController extends Controller {
 
-  String companyID = Keys.companySelected.fromBackpack();
 
-  String userId = "";
-  
   @override
   construct(BuildContext context) async {
     super.construct(context);
-    
   }
-
-  void init() async {
-    this.userId = await Auth.data()['id'];
-  }
-
-  DocumentController(): super() {}
 
   Future all({int page = 1}) async {
     return await api<DocuemntApiService>(
@@ -30,7 +21,7 @@ class DocumentController extends Controller {
     ).then((value) => value.map((e) => Document.fromJson(e)).toList());
   }
 
-  Future find(String documentID) async {
+  Future<Document?> find(String documentID) async {
     return await api<DocuemntApiService>(
         (request) => request.find(documentID)
     ).then((value) => Document.fromJson(value));
@@ -38,7 +29,7 @@ class DocumentController extends Controller {
 
   Future create(Document document) async {
     return await api<DocuemntApiService>(
-        (request) => request.create(this.companyID, document)  
+        (request) => request.create(this.context!.currentCompanyID, document)  
     );
   }
 
