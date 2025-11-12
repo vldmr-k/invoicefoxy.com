@@ -1,12 +1,12 @@
-import 'package:invoicefoxy_all/app/models/invoice.dart';
-import 'package:invoicefoxy_all/app/networking/invoice_api_service.dart';
+import 'package:invoicefoxy_all/app/models/document.dart';
+import 'package:invoicefoxy_all/app/networking/document_api_service.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 import '/app/controllers/controller.dart';
 import 'package:flutter/widgets.dart';
 import '/config/keys.dart';
 
-class InvoiceController extends Controller {
+class DocumentController extends Controller {
 
   String companyID = Keys.companySelected.fromBackpack();
 
@@ -22,24 +22,29 @@ class InvoiceController extends Controller {
     this.userId = await Auth.data()['id'];
   }
 
-  InvoiceController(): super() {}
+  DocumentController(): super() {}
 
   Future all({int page = 1}) async {
-    return await api<InvoiceApiService>(
+    return await api<DocuemntApiService>(
         (request) => request.all(page: page)
-    ).then((value) => value.map((e) => Invoice.fromJson(e)).toList());
+    ).then((value) => value.map((e) => Document.fromJson(e)).toList());
   }
 
-  create(Invoice invoice) async {
-    return await api<InvoiceApiService>(
-        (request) => request.create(this.companyID, invoice)  
+  Future find(String documentID) async {
+    return await api<DocuemntApiService>(
+        (request) => request.find(documentID)
+    ).then((value) => Document.fromJson(value));
+  }
+
+  Future create(Document document) async {
+    return await api<DocuemntApiService>(
+        (request) => request.create(this.companyID, document)  
     );
   }
 
-  update(String id, Invoice invoice) async {
-    return await api<InvoiceApiService>(
-        (request) => request.update(id, invoice)  
+  Future update(String id, Document document) async {
+    return await api<DocuemntApiService>(
+        (request) => request.update(id, document)  
     );
   }
-
 } 

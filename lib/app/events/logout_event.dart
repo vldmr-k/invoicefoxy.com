@@ -12,9 +12,7 @@ class LogoutEvent implements NyEvent {
 class DefaultListener extends NyListener {
   @override
   handle(dynamic event) async {
-    //OwnPocketBase.instance.authStore.clear();
     await Supabase.instance.client.auth.signOut()
-    .then((value) => Auth.logout())
     .then((value) => routeToInitial());
   }
 }

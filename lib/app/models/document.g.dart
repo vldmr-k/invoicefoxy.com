@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'invoice.dart';
+part of 'document.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Invoice _$InvoiceFromJson(Map<String, dynamic> json) => Invoice(
+Document _$DocumentFromJson(Map<String, dynamic> json) => Document(
       id: json['id'] as String? ?? '',
       type: json['type'] as String? ?? '',
       number: json['number'] as String? ?? '',
@@ -37,7 +37,7 @@ Invoice _$InvoiceFromJson(Map<String, dynamic> json) => Invoice(
           : DateTime.parse(json['updated'] as String),
     );
 
-Map<String, dynamic> _$InvoiceToJson(Invoice instance) => <String, dynamic>{
+Map<String, dynamic> _$DocumentToJson(Document instance) => <String, dynamic>{
       'id': instance.id,
       'type': instance.type,
       'number': instance.number,

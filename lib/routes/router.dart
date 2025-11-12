@@ -1,5 +1,5 @@
-import '/resources/pages/dashboard/invoice/invoice_preview_page.dart';
-import '/resources/pages/dashboard/invoice/invoice_builder_page.dart';
+import '../resources/pages/dashboard/document/document_preview_page.dart';
+import '../resources/pages/dashboard/document/document_builder_page.dart';
 import 'package:invoicefoxy_all/resources/pages/dashboard/customer/customer_show_page.dart';
 
 import '/resources/pages/dashboard/items_page.dart';
@@ -89,8 +89,8 @@ appRouter() => nyRoutes((router) {
 
 
     //invoice
-    router.add(InvoiceBuilderPage.path);
-    router.add(InvoicePreviewPage.path);
+    router.add(DocumentBuilderPage.path);
+    router.add(DocumentPreviewPage.path);
   });
 
   router.add(NotFoundPage.path).unknownRoute();

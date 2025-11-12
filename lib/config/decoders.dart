@@ -1,17 +1,16 @@
-import '/app/controllers/dashboard/invoice/invoice_preview_controller.dart';
-import '/app/controllers/dashboard/invoice/invoice_builder_controller.dart';
 import '/app/networking/item_api_service.dart';
 import '/app/models/item.dart';
 import '/app/controllers/dashboard/items_controller.dart';
-import '/app/networking/invoice_api_service.dart';
 import '../app/controllers/dashboard/customer_controller.dart';
 import '/app/controllers/dashboard/company_switcher_controller.dart';
 import '../app/networking/customer_api_service.dart';
+import '../app/networking/document_api_service.dart';
+
 import '../app/models/customer.dart';
 import '/app/controllers/company_onboarding_controller.dart';
 import '/app/networking/company_api_service.dart';
 import '/app/models/company.dart';
-import '/app/models/invoice.dart';
+import '../app/models/document.dart';
 import '../app/networking/auth_service.dart';
 import '/app/models/organization.dart';
 import '/app/controllers/dashboard_controller.dart';
@@ -44,9 +43,9 @@ final Map<Type, dynamic> modelDecoders = {
 
   Organization: (data) => Organization.fromJson(data),
 
-  List<Invoice>: (data) => List.from(data).map((json) => Invoice.fromJson(json)).toList(),
+  // List<Document>: (data) => List.from(data).map((json) => Document.fromJson(json)).toList(),
 
-  Invoice: (data) => Invoice.fromJson(data),
+  // Document: (data) => Document.fromJson(data),
 
   List<Company>: (data) => List.from(data).map((json) => Company.fromJson(json)).toList(),
 
@@ -74,15 +73,11 @@ final Map<Type, dynamic> apiDecoders = {
 
   // ...
 
-  AuthService: AuthService(),
-
-  CompanyApiService: CompanyApiService(),
-
-  CustomerApiService: CustomerApiService(),
-
-  InvoiceApiService: InvoiceApiService(),
-
-  ItemApiService: ItemApiService(),
+  AuthService: () => AuthService(),
+  CompanyApiService: () => CompanyApiService(),
+  CustomerApiService: () => CustomerApiService(),
+  ItemApiService: () => ItemApiService(),
+  DocuemntApiService: () => DocuemntApiService()
 };
 
 /* Controller Decoders
@@ -112,9 +107,4 @@ final Map<Type, dynamic> controllers = {
   CustomerController: () => CustomerController(),
 
   ItemsController: () => ItemsController(),
-
-
-  InvoiceBuilderController: () => InvoiceBuilderController(),
-
-  InvoicePreviewController: () => InvoicePreviewController(),
 };

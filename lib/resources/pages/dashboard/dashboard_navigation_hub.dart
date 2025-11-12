@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:invoicefoxy_all/bootstrap/extensions.dart';
-import 'package:invoicefoxy_all/resources/pages/dashboard/settings_page.dart';
 import 'package:invoicefoxy_all/resources/widgets/dashboard/dashboard_navigation_hub/customers_tab_widget.dart';
-import 'package:invoicefoxy_all/resources/widgets/dashboard/dashboard_navigation_hub/invoices_tab_widget.dart';
+import 'package:invoicefoxy_all/resources/widgets/dashboard/dashboard_navigation_hub/documents_tab_widget.dart';
 import 'package:invoicefoxy_all/resources/widgets/dashboard/dashboard_navigation_hub/tools_tab_widget.dart';
 import 'package:invoicefoxy_all/resources/widgets/dashboard/dashboard_navigation_hub/reports_tab_widget.dart';
 
 import 'package:nylo_framework/nylo_framework.dart';
 
 class DashboardNavigationHub extends NyStatefulWidget with BottomNavPageControls {
-  static RouteView path = ("/dashboard_navigation_hub", (_) => DashboardNavigationHub());
+  static RouteView path = ("/main", (_) => DashboardNavigationHub());
   
   DashboardNavigationHub()
       : super(
@@ -52,21 +50,9 @@ class _DashboardNavigationHubState extends NavigationHub<DashboardNavigationHub>
     dynamic items = {
       10: NavigationTab(
         title: "Invoices",
-        page: InvoicesTab(),
+        page: DocumentsTab(),
         icon: Icon(Icons.document_scanner),
         activeIcon: Icon(Icons.document_scanner),
-      ),
-      15: NavigationTab(
-        title: "Estimates",
-        page: InvoicesTab(),
-        icon: Icon(Icons.calculate),
-        activeIcon: Icon(Icons.calculate),
-      ),
-      20: NavigationTab(
-         title: "Customers",
-         page: CustomersTab(),
-         icon: Icon(Icons.group),
-         activeIcon: Icon(Icons.group),
       ),
       30: NavigationTab(
          title: "Tools",

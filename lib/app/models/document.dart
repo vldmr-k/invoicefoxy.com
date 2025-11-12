@@ -1,8 +1,7 @@
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:json_annotation/json_annotation.dart';
-import "package:pocketbase/pocketbase.dart";
 
-part 'invoice.g.dart';
+part 'document.g.dart';
 
 enum DocumentType {
   @JsonValue('invoice')
@@ -39,7 +38,7 @@ enum DiscounType {
 }
 
 @JsonSerializable()
-class Invoice extends Model {
+class Document extends Model {
 
   static StorageKey key = "invoices";
 
@@ -88,7 +87,7 @@ class Invoice extends Model {
 
   
   
-  Invoice({
+  Document({
     this.id = '',
     this.type = '',
     this.number = '',
@@ -107,10 +106,12 @@ class Invoice extends Model {
     this.updated = null,
   }) : super(key: key);
 
-  /// Connect the generated [_$Invoice] function to the `fromJson` factory.
-  factory Invoice.fromJson(Map<String, dynamic> json) => _$InvoiceFromJson(json);
+  // /// Connect the generated [_$Document] function to the `fromJson` factory.
+  // factory Document.fromJson(Map<String, dynamic> json) => _$DocumentFromJson(json);
 
-  /// Connect the generated [_$Invoice] function to the `toJson` method.
-  Map<String, dynamic> toJson() => _$InvoiceToJson(this);
+  // /// Connect the generated [_$Document] function to the `toJson` method.
+  // Map<String, dynamic> toJson() => _$DocumentoJson(this);
+
+  factory Document.fromJson(dynamic json) => Document();
   
 }

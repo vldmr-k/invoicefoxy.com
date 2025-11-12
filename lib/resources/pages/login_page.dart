@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:invoicefoxy_all/app/forms/login_form.dart';
+import 'package:invoicefoxy_all/resources/pages/register_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import '/resources/pages/forgot_password_page.dart';
 import '/app/controllers/login_controller.dart';
@@ -40,7 +41,12 @@ class _LoginPageState extends NyState<LoginPage> {
             Spacing.vertical(15),
 
             Text("Forgot your password?".tr(), textAlign: TextAlign.center)
-                .onTap(() => routeTo(ForgotPasswordPage.path))
+                .onTap(() => routeTo(ForgotPasswordPage.path)),
+            
+            Spacing.vertical(15),
+
+            Text("Register".tr(), textAlign: TextAlign.center)
+                .onTap(() => routeTo(RegisterPage.path))
           ],
         ),
       ),

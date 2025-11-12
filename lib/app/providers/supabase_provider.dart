@@ -1,5 +1,7 @@
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:invoicefoxy_all/config/keys.dart';
+
 
 class SupabaseProvider implements NyProvider {
 
@@ -12,18 +14,12 @@ class SupabaseProvider implements NyProvider {
       debug: getEnv('APP_DEBUG')
     );
 
-    // supabase.client.auth.onAuthStateChange.listen((data) {
-    //   final AuthChangeEvent event = data.event;
-    //   if(event == AuthChangeEvent.signedIn) {
-    //     Auth.authenticate(data: {
-    //       'id': data.session?.user.id,
-    //       'email': data.session?.user.email,
-    //       'phone': data.session?.user.phone,
-    //     });
-    //   } else if(event == AuthChangeEvent.signedOut) {
-    //     Auth.logout();
-    //   }
-    // });
+    supabase.client.auth.onAuthStateChange.listen((data) {
+      final AuthChangeEvent event = data.event;
+      if(event == AuthChangeEvent.signedOut) {
+        _handleSignOut();
+      }
+    });
    
      return nylo;
   }
@@ -33,5 +29,10 @@ class SupabaseProvider implements NyProvider {
    
      // Called after Nylo has finished booting
      // ...
+  }
+
+  _handleSignOut() {
+    Auth.logout();
+    Keys.companySelected.deleteFromStorage(andFromBackpack: true);
   }
 }

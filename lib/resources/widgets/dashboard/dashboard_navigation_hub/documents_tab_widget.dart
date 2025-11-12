@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:invoicefoxy_all/app/controllers/dashboard/invoice_controller.dart';
 import 'package:invoicefoxy_all/app/forms/invoice_form.dart';
-import 'package:invoicefoxy_all/app/models/invoice.dart';
-import 'package:invoicefoxy_all/resources/pages/dashboard/invoice/invoice_builder_page.dart';
-import 'package:invoicefoxy_all/resources/widgets/buttons/buttons.dart';
+import 'package:invoicefoxy_all/resources/pages/dashboard/document/document_builder_page.dart';
 import 'package:invoicefoxy_all/resources/widgets/layout/safearea_widget.dart';
 import 'package:invoicefoxy_all/resources/widgets/layout/scaffold_widget.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
-class InvoicesTab extends StatefulWidget {
+class DocumentsTab extends StatefulWidget {
   
-  const InvoicesTab({super.key});
+  const DocumentsTab({super.key});
 
   @override
   createState() => _InvoicesTabState();
 }
 
-class _InvoicesTabState extends NyState<InvoicesTab> {
-  InvoiceForm invoice = InvoiceForm();
-  InvoiceController controller = new InvoiceController();
+class _InvoicesTabState extends NyState<DocumentsTab> {
+  DocumentForm invoice = DocumentForm();
+  DocumentController controller = new DocumentController();
 
   @override
   get init => () {
@@ -31,7 +29,7 @@ class _InvoicesTabState extends NyState<InvoicesTab> {
       title: Text("Invoices"),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            routeTo(InvoiceBuilderPage.path);
+            routeTo(DocumentBuilderPage.path);
           },
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
           label: Text("Create Invoice"),

@@ -25,12 +25,11 @@ class AuthRouteGuard extends NyRouteGuard {
 
     bool isLoggedIn = (await Auth.isAuthenticated());
     if (!isLoggedIn) {
-      return redirect(LoginPage.path);
+      return redirect(
+        LoginPage.path,
+        navigationType: NavigationType.pushAndForgetAll
+      );
     }
-
-    var data = (await Auth.data()) ;
-
-    printDebug("User $data");
 
     return pageRequest;
   }
